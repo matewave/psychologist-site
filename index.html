@@ -319,6 +319,28 @@
       line-height: 1.88;
       margin-bottom: 44px;
     }
+    .practice-stat {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 14px;
+      padding: 16px 24px;
+      background: rgba(77,184,212,0.08);
+      border-left: 3px solid var(--turquoise);
+      border-radius: 6px;
+      margin-bottom: 44px;
+    }
+    .practice-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--ocean-deep);
+      line-height: 1;
+    }
+    .practice-txt {
+      font-size: 0.94rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
     .cred-label {
       font-size: 0.7rem;
       letter-spacing: 0.16em;
@@ -358,8 +380,9 @@
     }
     .beyond-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+      max-width: 640px;
     }
     .beyond-card {
       background: var(--white);
@@ -439,19 +462,42 @@
       box-shadow: 0 8px 48px rgba(0,0,0,0.2);
       backdrop-filter: blur(8px);
     }
-    .sched-time {
+    .sched-price {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 3.2rem;
+      font-size: 3rem;
       font-weight: 500;
       color: #fff;
       line-height: 1;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
-    .sched-sub {
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 36px;
+    .sched-price-unit {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.55);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.01em;
     }
+    .sched-free {
+      display: inline-block;
+      font-size: 0.85rem;
+      color: var(--turquoise);
+      background: rgba(77,184,212,0.12);
+      border: 1px solid rgba(77,184,212,0.3);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 26px;
+      letter-spacing: 0.01em;
+    }
+    .sched-details {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 32px;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+    }
+    .sched-details li { margin-bottom: 6px; }
+    .sched-details li:last-child { margin-bottom: 0; }
     /* FIX 4 — CTA button in schedule is turquoise (visually distinct from dark bg) */
     .btn-tg {
       display: inline-flex;
@@ -473,64 +519,6 @@
       box-shadow: 0 12px 36px rgba(77,184,212,0.4);
     }
     .btn-tg svg { width: 18px; height: 18px; flex-shrink: 0; }
-
-    /* ─── BLOG ─── */
-    #blog { background: var(--white); }
-    .blog-lead {
-      font-size: 1rem;
-      color: var(--muted);
-      max-width: 520px;
-      margin-bottom: 52px;
-      line-height: 1.8;
-    }
-    .story-card {
-      background: var(--bg);
-      border-radius: 22px;
-      padding: 44px 52px;
-      max-width: 780px;
-      border-left: 3px solid var(--turquoise);
-    }
-    .story-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: var(--ocean-deep);
-      margin-bottom: 6px;
-    }
-    .story-meta { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.06em; margin-bottom: 28px; }
-    .story-body {
-      font-size: 0.96rem;
-      color: var(--text);
-      line-height: 1.95;
-      max-height: 220px;
-      overflow: hidden;
-      position: relative;
-      transition: max-height 0.55s cubic-bezier(0.4,0,0.2,1);
-    }
-    .story-body.open { max-height: 3000px; }
-    .story-body p { margin-bottom: 14px; }
-    .story-body p:last-child { margin-bottom: 0; }
-    .story-grad {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 90px;
-      background: linear-gradient(to bottom, transparent, var(--bg));
-      transition: opacity 0.3s;
-    }
-    .story-body.open .story-grad { opacity: 0; pointer-events: none; }
-    .story-btn {
-      background: none; border: none;
-      color: var(--turquoise-text);
-      font-size: 0.88rem;
-      font-weight: 500;
-      cursor: pointer;
-      padding: 0;
-      margin-top: 18px;
-      font-family: 'Inter', sans-serif;
-      transition: color 0.2s;
-      display: block;
-    }
-    .story-btn:hover { color: var(--ocean-light); }
 
     /* ─── CTA ─── */
     #cta {
@@ -573,10 +561,9 @@
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
       .photo-col { position: static; max-width: 280px; }
 
-      .story-card { padding: 30px 24px; }
       section { padding: 72px 20px; }
       .sched-card { padding: 36px 28px; }
-      .sched-time { font-size: 2.4rem; }
+      .sched-price { font-size: 2.4rem; }
       footer { padding: 24px; flex-direction: column; text-align: center; }
     }
   </style>
@@ -587,10 +574,9 @@
 <div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Навигация">
   <a href="#act"      onclick="closeMobileNav()">ACT</a>
   <a href="#about"    onclick="closeMobileNav()">Обо мне</a>
-  <a href="#surfing"  onclick="closeMobileNav()">Серфинг</a>
+  <a href="#beyond"   onclick="closeMobileNav()">Опыт</a>
   <a href="#schedule" onclick="closeMobileNav()">Запись</a>
-  <a href="#blog"     onclick="closeMobileNav()">Рассказы</a>
-  <a href="https://t.me/slavaocean" class="mn-cta" target="_blank" rel="noopener">Записаться</a>
+  <a href="https://t.me/slavaocean" class="mn-cta" target="_blank" rel="noopener">Написать</a>
 </div>
 
 <!-- ═══ NAV ═══ -->
@@ -599,11 +585,10 @@
   <ul class="nav-links">
     <li><a href="#act">ACT</a></li>
     <li><a href="#about">Обо мне</a></li>
-    <li><a href="#surfing">Серфинг</a></li>
+    <li><a href="#beyond">Опыт</a></li>
     <li><a href="#schedule">Запись</a></li>
-    <li><a href="#blog">Рассказы</a></li>
   </ul>
-  <a href="https://t.me/slavaocean" class="btn-nav" target="_blank" rel="noopener">Записаться</a>
+  <a href="https://t.me/slavaocean" class="btn-nav" target="_blank" rel="noopener">Написать</a>
   <button class="nav-burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
@@ -690,6 +675,11 @@
           чтобы жизнь снова стала вашей, даже когда внутри неспокойно.
         </p>
 
+        <div class="practice-stat reveal">
+          <span class="practice-num">400+</span>
+          <span class="practice-txt">часов практики консультирования</span>
+        </div>
+
         <p class="cred-label">Образование и квалификации</p>
         <div class="creds">
           <div class="cred reveal">
@@ -734,11 +724,6 @@
     </p>
     <div class="beyond-grid">
       <div class="beyond-card reveal">
-        <div class="bi">⚕️</div>
-        <h4>Медицинское оборудование</h4>
-        <p>13 лет в сфере, направление Application. Этот опыт научил быстро находить контакт с новыми людьми — ключевой навык и в терапии.</p>
-      </div>
-      <div class="beyond-card reveal">
         <div class="bi">🏋️</div>
         <h4>Кроссфит-тренер</h4>
         <p>CrossFit Level 2, специализации по гимнастике, тяжёлой атлетике и работе с атлетами с ограничениями. Тело и психика неразделимы.</p>
@@ -752,80 +737,29 @@
   </div>
 </section>
 
-<!-- ═══ SURFING ═══ -->
-<section id="surfing">
-  <div class="container">
-    <p class="label" style="color:var(--turquoise)">Лайфстайл</p>
-    <h2>Море внутри</h2>
-    <p class="surf-quote">
-      «Ты не можешь остановить волны,<br>
-      но ты можешь научиться на них кататься»
-    </p>
-    <p class="surf-text">
-      С 2015 года — с первой доски на Venice Beach в Лос-Анджелесе — серфинг стал для меня
-      не просто увлечением, а способом смотреть на жизнь. Я катался на разных побережьях
-      и каждый раз убеждался: океан — лучший учитель принятия. Волну не остановишь
-      и не уговоришь. Но можно научиться с ней.<br><br>
-      Именно об этом — ACT. Даже в шторм, даже в тревоге — ты можешь двигаться
-      туда, куда важно для тебя.
-    </p>
-  </div>
-</section>
-
 <!-- ═══ SCHEDULE ═══ -->
 <section id="schedule">
   <div class="container">
     <p class="label">Запись</p>
-    <h2>Готов к разговору</h2>
+    <h2>Давайте познакомимся</h2>
     <div class="sched-card reveal">
-      <div class="sched-time">10:00 — 20:00</div>
-      <div class="sched-sub">Ежедневно &middot; Москва (UTC+3) &middot; Онлайн</div>
+      <div class="sched-price">5 000 ₽ <span class="sched-price-unit">/ 60 минут</span></div>
+      <div class="sched-free">Первое знакомство — 20 минут, бесплатно</div>
+      <ul class="sched-details">
+        <li>Ежедневно &middot; 10:00 – 20:00 (Москва, UTC+3)</li>
+        <li>Онлайн &middot; Zoom, Яндекс&nbsp;Телемост или Telegram</li>
+      </ul>
       <a href="https://t.me/slavaocean" class="btn-tg" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
         </svg>
-        Написать в Telegram
+        Записаться на знакомство
       </a>
     </div>
   </div>
 </section>
 
 <!-- ═══ BLOG ═══ -->
-<section id="blog">
-  <div class="container">
-    <p class="label">Терапевтические рассказы</p>
-    <h2>Слова, которые<br>работают</h2>
-    <p class="blog-lead">
-      Короткие истории о важном. О принятии, смысле и том, как устроена жизнь изнутри.
-    </p>
-
-    <div class="story-card reveal">
-      <div class="story-title">Простые истины</div>
-      <div class="story-meta">Июнь 2026</div>
-      <div class="story-body" id="story1">
-        <p>Поздним вечером, волоча ноги по протоптанной тропинке воспоминаний, Митя в очередной раз возвращался из эфемерного пространства ностальгирующих грёз.</p>
-        <p>Белые кеды, собрав на себе многообразие разноцветной пыли, приобрели фантасмагорический окрас, привлекающий взоры всех созданий от мала до велика. Ленивое солнышко, потягиваясь в утренней неге, устремило свои восходящие лучи на кристаллики небесной пыли, осевшие на непослушных шнурках нашего героя.</p>
-        <p>«Как красиво!» — скажете вы, представляя процесс переливания всех цветов радуги на банальных, уставших, даже немного грязных шнурках.</p>
-        <p>Я с вами соглашусь!</p>
-        <p>Вся прелесть заключается в том, что солнцу совсем не важно — светить или не светить. Оно просто светит, так или иначе, не думая о последствиях, о взглядах со стороны, об ответной реакции и намерениях о разного рода наживе.</p>
-        <p>Просто свети!</p>
-        <p>Такая простая истина кому-то может показаться инфантильной и глупой, но, поверив в неё, жить становится в разы легче, проще и интереснее.</p>
-        <p>Свет являет себя видавшим тьму. Увидеть солнце или свет софитов может каждый. Разглядеть лучик красоты, скромно пробивающийся, едва заметный в потоке информационного и экзистенциального мусора, могут единицы. Эти смельчаки обладают величайшим даром, способностью управляться простыми истинами, такими тёплыми открытому сердцу.</p>
-        <p>Развеваясь на ветру, отражая лучики уже менее ленивого солнца, непослушная, иногда дерзкая прядь волос Алисы, выцветшая красивым розоватым оттенком, будто подыгрывала мелодии спокойствия и счастливого умиротворения.</p>
-        <p>Алиса с удивлением наблюдала всю палитру кристалликов, разыгравшуюся на потёртых Митиных ботинках. Наклонив голову и прикрыв глаза, она, нежно улыбнувшись, впустила красоту в свою душу. У неё был красивый велосипед. Она была красивее.</p>
-        <p>Мы молоды, красивы, счастливы и немного бессмертны. Мы можем быть по-хорошему дикими и пытливыми, с горящими глазами и душами, в вечном поиске гармонии и моря.</p>
-        <p>Такие простые мы. Такие простые истины. Такое простое счастье.</p>
-        <p>Просто вдохни. Просто осознай. Просто приглядись.</p>
-        <p>Митя шёл к Морю. Море уже было в Мите. Море внутри. 🌊</p>
-        <div class="story-grad"></div>
-      </div>
-      <button class="story-btn" id="storyBtn" onclick="toggleStory()">
-        Читать полностью ↓
-      </button>
-    </div>
-  </div>
-</section>
-
 <!-- ═══ CTA ═══ -->
 <section id="cta">
   <div class="container">
@@ -884,14 +818,6 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
 
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  // ── Story expand ──
-  function toggleStory() {
-    const body = document.getElementById('story1');
-    const btn  = document.getElementById('storyBtn');
-    const open = body.classList.toggle('open');
-    btn.textContent = open ? 'Свернуть ↑' : 'Читать полностью ↓';
-  }
 </script>
 
 </body>
