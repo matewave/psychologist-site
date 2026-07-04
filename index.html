@@ -444,6 +444,97 @@
       z-index: 1;
     }
 
+    /* ─── TESTIMONIALS ─── */
+    #testimonials { background: var(--white); }
+    .test-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 44px;
+    }
+    .test-card {
+      background: var(--bg);
+      border-radius: 22px;
+      padding: 36px 34px 30px;
+      border-left: 3px solid var(--turquoise);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .test-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.4rem;
+      line-height: 1;
+      color: var(--turquoise);
+      opacity: 0.35;
+      position: absolute;
+      top: 14px;
+      right: 22px;
+      font-style: italic;
+    }
+    .test-body {
+      font-size: 0.98rem;
+      line-height: 1.75;
+      color: var(--text);
+      margin-bottom: 22px;
+      font-style: italic;
+    }
+    .test-attr {
+      margin-top: auto;
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ─── FAQ ─── */
+    #faq { background: var(--bg); }
+    .faq-list {
+      max-width: 780px;
+      margin-top: 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .faq-item {
+      background: var(--white);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 22px 28px;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ocean-deep);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      transition: background 0.2s;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:hover { background: rgba(77,184,212,0.05); }
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--turquoise-text);
+      line-height: 1;
+      flex-shrink: 0;
+      transition: transform 0.25s;
+    }
+    .faq-item[open] summary::after { content: '−'; }
+    .faq-answer {
+      padding: 0 28px 24px;
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
     /* ─── SCHEDULE — FIX 6: dark section for rhythm ─── */
     #schedule {
       background: linear-gradient(160deg, #0a1e2e 0%, var(--ocean-mid) 100%);
@@ -581,10 +672,12 @@
 
 <!-- ═══ MOBILE NAV OVERLAY ═══ -->
 <div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Навигация">
-  <a href="#act"      onclick="closeMobileNav()">ACT</a>
-  <a href="#about"    onclick="closeMobileNav()">Обо мне</a>
-  <a href="#beyond"   onclick="closeMobileNav()">Опыт</a>
-  <a href="#schedule" onclick="closeMobileNav()">Запись</a>
+  <a href="#act"          onclick="closeMobileNav()">ACT</a>
+  <a href="#about"        onclick="closeMobileNav()">Обо мне</a>
+  <a href="#beyond"       onclick="closeMobileNav()">Опыт</a>
+  <a href="#testimonials" onclick="closeMobileNav()">Отзывы</a>
+  <a href="#faq"          onclick="closeMobileNav()">Вопросы</a>
+  <a href="#schedule"     onclick="closeMobileNav()">Запись</a>
   <a href="https://t.me/slavaocean" class="mn-cta" target="_blank" rel="noopener">Написать</a>
 </div>
 
@@ -594,7 +687,8 @@
   <ul class="nav-links">
     <li><a href="#act">ACT</a></li>
     <li><a href="#about">Обо мне</a></li>
-    <li><a href="#beyond">Опыт</a></li>
+    <li><a href="#testimonials">Отзывы</a></li>
+    <li><a href="#faq">Вопросы</a></li>
     <li><a href="#schedule">Запись</a></li>
   </ul>
   <a href="https://t.me/slavaocean" class="btn-nav" target="_blank" rel="noopener">Написать</a>
@@ -746,6 +840,39 @@
   </div>
 </section>
 
+<!-- ═══ TESTIMONIALS ═══ -->
+<section id="testimonials">
+  <div class="container">
+    <p class="label">Отзывы</p>
+    <h2>Что говорят клиенты</h2>
+    <div class="test-grid">
+      <div class="test-card reveal">
+        <span class="test-quote">“</span>
+        <p class="test-body">
+          Вы помогли мне преодолеть мой очень важный внутренний порог.
+          Я поняла, что могу менять свою жизнь в нужную мне сторону,
+          ставить цели и достигать их — цели, которые долгое время
+          казались недоступными. Отношения с мужем стали лучше,
+          у меня меньше и реже раздражение к нему. Это не прощание,
+          а промежуточное подведение итогов — думаю, я к вам вернусь.
+        </p>
+        <div class="test-attr">Клиентка &middot; 2025</div>
+      </div>
+      <div class="test-card reveal">
+        <span class="test-quote">“</span>
+        <p class="test-body">
+          У меня огромный прорыв в жизни произошёл. Я научилась себя
+          слышать, соблюдать баланс работы и отдыха, осознала, насколько
+          разрушительным может быть в долгосрочной перспективе моё
+          терпение по мелочам, и наконец-то распробовала, что такое
+          удалённая работа. Благодарю от всей души.
+        </p>
+        <div class="test-attr">Клиентка &middot; 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ SCHEDULE ═══ -->
 <section id="schedule">
   <div class="container">
@@ -768,6 +895,68 @@
       <p class="sched-conf">
         Всё, что вы расскажете, останется между нами. Работаю в рамках этического кодекса психолога.
       </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section id="faq">
+  <div class="container">
+    <p class="label">Вопросы</p>
+    <h2>Что часто спрашивают</h2>
+    <div class="faq-list">
+      <details class="faq-item reveal">
+        <summary>Что будет на первой встрече?</summary>
+        <div class="faq-answer">
+          Первое знакомство — 20 минут, бесплатно. Вы рассказываете, зачем пришли и что происходит.
+          Я задаю уточняющие вопросы, коротко объясняю, как могла бы выглядеть наша работа.
+          В конце вы решаете, подхожу ли вам я и подход. Никакого давления записаться.
+        </div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Сколько сессий обычно нужно?</summary>
+        <div class="faq-answer">
+          Это зависит от запроса. С точечными задачами часто хватает 8–15 встреч.
+          С более глубокими темами — отношения, самоощущение, длительная тревога, выгорание —
+          работа идёт дольше. На первой встрече мы обсудим ориентировочный горизонт под ваш запрос.
+        </div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Психолог, психотерапевт, психиатр — чем вы отличаетесь?</summary>
+        <div class="faq-answer">
+          Я психолог-консультант. Работаю с эмоциональными состояниями, отношениями,
+          кризисами, поиском смысла и опоры. Не назначаю лекарства — это к психиатру.
+          Не работаю с психическими заболеваниями в острой фазе — там нужен клинический
+          специалист. Если ваш случай выходит за рамки моей компетенции, честно скажу
+          и помогу найти подходящего коллегу.
+        </div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Как я пойму, что ACT мне подходит?</summary>
+        <div class="faq-answer">
+          ACT работает, если вы устали воевать с собой и готовы попробовать другой путь:
+          не «выключить» тревогу, боль или сложные мысли, а научиться жить полноценно
+          вместе с ними — двигаясь в сторону того, что для вас по-настоящему важно.
+          Проще всего это почувствовать на бесплатной встрече.
+        </div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>А если после первой встречи я пойму, что мне не подходит?</summary>
+        <div class="faq-answer">
+          Это нормально и обсуждается открыто. Терапия — это про доверие и точное совпадение,
+          и не всегда мы совпадаем с первого раза. Если чувствуете, что нужен другой человек
+          или подход, — помогу сориентироваться и порекомендую коллег.
+        </div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Как устроена конфиденциальность?</summary>
+        <div class="faq-answer">
+          Всё, что вы рассказываете на сессии, остаётся между нами. Я не делюсь содержанием
+          работы с третьими лицами и не обсуждаю клиентов публично. Единственное исключение
+          прописано в этическом кодексе психолога и касается прямой угрозы жизни —
+          вашей или чужой.
+        </div>
+      </details>
     </div>
   </div>
 </section>
